@@ -20,7 +20,8 @@ FPS = 60
 ##########################################################################
 cloud_x = 625
 cloud_x2 = 325
-cloudx_velo = 2.5
+cloudx_velo = 3.5
+cloudy_velo = 0.5
 cloud_y = 100
 
 
@@ -48,6 +49,11 @@ while running:
     if cloud_x2 - 30 > 800:
             cloud_x2 = -100
 
+    if cloud_y > 125:
+        cloudy_velo *= -1
+
+    if cloud_y < 75:
+        cloudy_velo *= -1
 
     screen.fill(SKY_BLUE)
 
@@ -89,6 +95,7 @@ while running:
     cloud(cloud_x2, cloud_y - 50)
     cloud_x += cloudx_velo
     cloud_x2 += cloudx_velo - 1
+    cloud_y += cloudy_velo
 
     # lava smoke
     pygame.draw.circle(screen, LIGHT_GREY, [400, 175], 40)
